@@ -29,6 +29,10 @@ class TicketsService {
 
         return await Ticket.findAll({ where: whereFilter });
     }
+
+    static async getTicketById(id) {
+        return await Ticket.findByPk(id);
+    }
 }
 
 module.exports = TicketsService;
