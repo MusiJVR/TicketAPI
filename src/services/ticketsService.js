@@ -33,6 +33,17 @@ class TicketsService {
     static async getTicketById(id) {
         return await Ticket.findByPk(id);
     }
+
+    static async takeTicket(id) {
+        const ticket = await Ticket.findByPk(id);
+
+        if (ticket) {
+            ticket.status = 'В работе';
+            await ticket.save();
+        }
+
+        return ticket;
+    }
 }
 
 module.exports = TicketsService;
