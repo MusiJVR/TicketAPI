@@ -1,8 +1,8 @@
-const ticketController = require('../controllers/ticketController');
+const TicketController = require('../controllers/ticketController');
 const express = require('express');
 const router = express.Router();
 
-router.post('/', ticketController.createTicket);
-router.get('/', ticketController.getTickets);
+router.post('/', TicketController.createTicket);
+router.get('/', TicketController.getTickets);
 
 module.exports = router;

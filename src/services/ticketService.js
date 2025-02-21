@@ -1,13 +1,13 @@
 const Ticket = require('../models/ticket');
 
 class TicketService {
-    async createTicket({ title, description }) {
+    static async createTicket({ title, description }) {
         return await Ticket.create({ title, description });
     }
 
-    async getTickets() {
+    static async getTickets() {
         return await Ticket.findAll();
     }
 }
 
-module.exports = new TicketService();
+module.exports = TicketService;

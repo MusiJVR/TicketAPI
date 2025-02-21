@@ -1,7 +1,7 @@
 const ticketService = require('../services/ticketService');
 
 class TicketController {
-    async createTicket(req, res) {
+    static async createTicket(req, res) {
         try {
             const { title, description } = req.body;
             const ticket = await ticketService.createTicket({ title, description });
@@ -11,7 +11,7 @@ class TicketController {
         }
     }
 
-    async getTickets(req, res) {
+    static async getTickets(req, res) {
         try {
             const tickets = await ticketService.getTickets();
             res.status(200).json(tickets);
@@ -21,4 +21,4 @@ class TicketController {
     }
 }
 
-module.exports = new TicketController();
+module.exports = TicketController;
