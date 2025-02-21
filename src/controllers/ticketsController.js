@@ -1,10 +1,10 @@
-const ticketService = require('../services/ticketService');
+const TicketsService = require('../services/ticketsService');
 
-class TicketController {
+class TicketsController {
     static async createTicket(req, res) {
         try {
             const { title, description } = req.body;
-            const ticket = await ticketService.createTicket({ title, description });
+            const ticket = await TicketsService.createTicket({ title, description });
             res.status(201).json(ticket);
         } catch (error) {
             res.status(500).json({ error: 'Error creating request', details: error.message });
@@ -14,7 +14,7 @@ class TicketController {
     static async getTickets(req, res) {
         try {
             const { date, startDate, endDate } = req.query;
-            const tickets = await ticketService.getTickets({ date, startDate, endDate });
+            const tickets = await TicketsService.getTickets({ date, startDate, endDate });
             res.status(200).json(tickets);
         } catch (error) {
             res.status(500).json({ error: 'Error receiving requests', details: error.message });
@@ -22,4 +22,4 @@ class TicketController {
     }
 }
 
-module.exports = TicketController;
+module.exports = TicketsController;

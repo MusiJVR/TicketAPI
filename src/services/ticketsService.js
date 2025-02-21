@@ -1,7 +1,7 @@
 const Ticket = require('../models/ticket');
 const { Op } = require('sequelize');
 
-class TicketService {
+class TicketsService {
     static async createTicket({ title, description }) {
         return await Ticket.create({ title, description });
     }
@@ -26,10 +26,9 @@ class TicketService {
                 ]
             }
         }
-        
 
         return await Ticket.findAll({ where: whereFilter });
     }
 }
 
-module.exports = TicketService;
+module.exports = TicketsService;

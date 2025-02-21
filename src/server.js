@@ -3,7 +3,7 @@ require('dotenv').config();
 const { testConnection } = require('./database');
 const { syncDatabase } = require('./models/index');
 
-const ticketRoutes = require('./routes/ticketRoutes');
+const ticketsRoutes = require('./routes/ticketsRoutes');
 
 async function startServer() {
     const app = express();
@@ -11,7 +11,7 @@ async function startServer() {
     
     app.use(express.json());
     
-    app.use('/ticket', ticketRoutes);
+    app.use('/tickets', ticketsRoutes);
 
     await testConnection();
     await syncDatabase();
