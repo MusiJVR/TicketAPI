@@ -13,7 +13,8 @@ class TicketController {
 
     static async getTickets(req, res) {
         try {
-            const tickets = await ticketService.getTickets();
+            const { date, startDate, endDate } = req.query;
+            const tickets = await ticketService.getTickets({ date, startDate, endDate });
             res.status(200).json(tickets);
         } catch (error) {
             res.status(500).json({ error: 'Error receiving requests', details: error.message });
