@@ -46,6 +46,20 @@ class TicketsController {
             res.status(500).json({ error: 'Error receiving requests', details: error.message });
         }
     }
+
+    static async cancelTicket(req, res) {
+        try {
+            const { cancelReason } = req.body;
+            const ticket = await TicketsService.cancelTicket(req.params.id, { cancelReason });
+            if (!ticket) {
+                res.status(404).json({ message: 'Ticket not found' });
+                return;
+            }
+            res.status(200).json(ticket);
+        } catch (error) {
+            res.status(500).json({ error: 'Error receiving requests', details: error.message });
+        }
+    }
 }
 
 module.exports = TicketsController;

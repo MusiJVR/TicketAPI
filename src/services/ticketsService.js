@@ -44,6 +44,18 @@ class TicketsService {
 
         return ticket;
     }
+
+    static async cancelTicket(id, { cancelReason }) {
+        const ticket = await Ticket.findByPk(id);
+
+        if (ticket) {
+            ticket.status = 'Отменено';
+            ticket.cancelReason = cancelReason;
+            await ticket.save();
+        }
+
+        return ticket;
+    }
 }
 
 module.exports = TicketsService;
