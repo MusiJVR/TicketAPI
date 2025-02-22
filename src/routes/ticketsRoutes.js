@@ -7,5 +7,6 @@ router.get('/', TicketsController.getTickets);
 router.get('/:id', TicketsController.getTicketById);
 router.patch('/:id/take', TicketsController.takeTicket);
 router.patch('/:id/cancel', TicketsController.cancelTicket);
+router.patch('/cancel-all-in-work', TicketsController.cancelAllInWorkTicket);
 
 module.exports = router;

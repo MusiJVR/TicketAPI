@@ -56,6 +56,15 @@ class TicketsService {
 
         return ticket;
     }
+
+    static async cancelAllInWorkTicket({ cancelReason }) {
+        const [updatedCount] = await Ticket.update(
+            { status: 'Отменено', cancelReason },
+            { where: { status: 'В работе' } }
+        );
+
+        return updatedCount;
+    }
 }
 
 module.exports = TicketsService;

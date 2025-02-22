@@ -60,6 +60,16 @@ class TicketsController {
             res.status(500).json({ error: 'Error receiving requests', details: error.message });
         }
     }
+
+    static async cancelAllInWorkTicket(req, res) {
+        try {
+            const { cancelReason } = req.body;
+            const updatedCount = await TicketsService.cancelAllInWorkTicket({ cancelReason });
+            res.status(200).json({ message: 'Tickets cancelled', count: updatedCount });
+        } catch (error) {
+            res.status(500).json({ error: 'Error receiving requests', details: error.message });
+        }
+    }
 }
 
 module.exports = TicketsController;
