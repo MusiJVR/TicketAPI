@@ -65,6 +65,18 @@ class TicketsService {
 
         return updatedCount;
     }
+
+    static async completeTicket(id, { solutionText }) {
+        const ticket = await Ticket.findByPk(id);
+
+        if (ticket) {
+            ticket.status = 'Завершено';
+            ticket.solutionText = solutionText;
+            await ticket.save();
+        }
+
+        return ticket;
+    }
 }
 
 module.exports = TicketsService;

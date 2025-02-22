@@ -70,6 +70,20 @@ class TicketsController {
             res.status(500).json({ error: 'Error receiving requests', details: error.message });
         }
     }
+
+    static async completeTicket(req, res) {
+        try {
+            const { solutionText } = req.body;
+            const ticket = await TicketsService.completeTicket(req.params.id, { solutionText });
+            if (!ticket) {
+                res.status(404).json({ message: 'Ticket not found' });
+                return;
+            }
+            res.status(200).json(ticket);
+        } catch (error) {
+            res.status(500).json({ error: 'Error receiving requests', details: error.message });
+        }
+    }
 }
 
 module.exports = TicketsController;
