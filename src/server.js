@@ -5,20 +5,20 @@ const { syncDatabase } = require('./models/index');
 
 const ticketsRoutes = require('./routes/ticketsRoutes');
 
-async function startServer() {
-    const app = express();
-    const PORT = process.env.PORT || 3000;
+const app = express();
     
-    app.use(express.json());
+app.use(express.json());
     
-    app.use('/tickets', ticketsRoutes);
+app.use('/tickets', ticketsRoutes);
 
-    await testConnection();
-    await syncDatabase();
-
-    app.listen(PORT, () => {
-        console.log(`Server is running on http://localhost:${PORT}`);
-    });
+async function initializeDatabase() {
+    try {
+        await testConnection();
+        await syncDatabase();
+    } catch (error) {
+        console.error('Database initialization error:', error);
+        process.exit(1);
+    }
 }
 
-module.exports = { startServer };
+module.exports = { app, initializeDatabase };
