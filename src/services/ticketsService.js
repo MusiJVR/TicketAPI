@@ -1,4 +1,4 @@
-const Ticket = require('../models/ticket');
+const { Ticket } = require('../models');
 const { Op } = require('sequelize');
 
 class TicketsService {
