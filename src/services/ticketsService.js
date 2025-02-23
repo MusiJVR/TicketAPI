@@ -3,7 +3,8 @@ const { Op } = require('sequelize');
 
 class TicketsService {
     static async createTicket({ title, description }) {
-        return await Ticket.create({ title, description });
+        const ticket = await Ticket.create({ title, description });
+        return await Ticket.findByPk(ticket.id);
     }
 
     static async getTickets({ date, startDate, endDate }) {
