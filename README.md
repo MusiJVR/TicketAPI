@@ -69,11 +69,13 @@ npm run start
 
 ```json
 {
-    "createdAt": "2025-02-23T06:03:41.137Z",
-    "status": "Новое",
     "id": 2,
     "title": "Проблема с Интернетом",
     "description": "Последнее время стал часто пропадать Интернет на компьютере",
+    "status": "Новое",
+    "solutionText": null,
+    "cancelReason": null,
+    "createdAt": "2025-02-23T06:03:41.137Z",
     "updatedAt": "2025-02-23T06:03:41.137Z"
 }
 ```
